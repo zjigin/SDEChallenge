@@ -1,69 +1,25 @@
-# SDE Challenge
-1. Coding task:
+# PaytmLabs SDE Challenge
 
-    In object-oriented and functional programming, an immutable object is an object whose state cannot be modified after it is created. This is in contrast to a mutable object which can be modified after it is created. 
+## Coding Question
 
-    Classes should be immutable unless there's a very good reason to make them mutable. If a class cannot be made immutable, limit its mutability as much as possible. The JDK contains many immutable classes, including String, the boxed primitive classes, and BigInteger and etc. Basically the immutable classes are less prone to error. 
+Write an interface for a data structure that can provide the moving average of the last N elements added, add elements to the structure and get access to the elements. Provide an efficient implementation the interface for the data structure.
 
-    Please implement an immutable queue with the following api:
-	
-    Scala Version:
-    ```scala
-	trait Queue[T] {
-	  def isEmpty: Boolean
-	  def enQueue(t: T): Queue[T]
-	  # Removes the element at the beginning of the immutable queue, and returns the new queue.
-	  def deQueue(): Queue[T]
-	  def head: Option[T]
-	}
-	object Queue {
-	  def empty[T]: Queue[T] = ???
-	}
-    ```
+### Minimum Requirements
 
-    Java Version:
-    ```java
-	public interface Queue[T] {
-	    public Queue<T> enQueue(T t);
-	    #Removes the element at the beginning of the immutable queue, and returns the new queue.
-	    public Queue<T> deQueue();
-	    public T head();
-	    public boolean isEmpty();
-	}
-    ```
+1. Provide separate interface (IE `interface`/`trait`) with documentation for the data structure
+2. Provide implementation for the interface
+3. Provide any additional explanation about the interface and implementation in a README file.
 
-    pls refer to question_1.scala for the solution.
-    key points:
-    1) understand the immutable concept. Make sure a new reference is used in their test cases after enQueue/deQueue. e.g.
-    ```scala
-       val q2 = q1.insert(1)
-    ```
+## Design Question
 
-    and the original queue shouldn't be changed by enQueue/deQueue action.
-    
-    2) checking complexity.
-    ```scala
-    	// O(1)
-	def isEmpty: Boolean
-	// O(1)
-	def enQueue(t: T): Queue[T]
-	// O(1)
-	def head: Option[T]
-	// O(1) amortised
-	def deQueue: Queue[T]
-    ```
+Design A Google Analytic like Backend System.
+We need to provide Google Analytic like services to our customers. Pls provide a high level solution design for the backend system. Feel free to choose any open source tools as you want.
 
-2. Design Question: Design A Google Analytic like Backend System.
-    We need to provide Google Analytic like services to our customers. Pls provide a high level solution design for the backend system. Feel free to choose any open source tools as you want.
-	
-	The system needs to:
+### Requirements
 
-	1) handle large write volume: Billions write events per day.
-	
-	2) handle large read/query volume: Millions merchants want to get insight about their business. Read/Query patterns are time-series related metrics. 
-	
-	3) provide metrics to customers with at most one hour delay.
-	
-	4) run with minimum downtime.
-	
-	5) have the ability to reprocess historical data in case of bugs in the processing logic.
+1. Handle large write volume: Billions write events per day.
+2. Handle large read/query volume: Millions merchants want to get insight about their business. Read/Query patterns are time-series related metrics.
+3. Provide metrics to customers with at most one hour delay.
+4. Run with minimum downtime.
+5. Have the ability to reprocess historical data in case of bugs in the processing logic.
+
